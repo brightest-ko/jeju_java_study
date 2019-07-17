@@ -1,0 +1,13 @@
+C:\Program Files\Java\jdk1.7.0_80\bin\ 을 환경변수에 추가해 준다.
+(마지막에 \추가 & cmd재실행)
+나눔고딕코딩으로 npp설정
+D2Coding 으로 콘솔 글꼴 변경
+
+window(command)+R키 = 실행 + cmd
+java -version (java version "1.7.0_80")
+mkdir C:\javaWork (폴더생성)
+cd C:\javaWork (위치변경)
+javac HelloWorld.java
+java HelloWorld
+
+=====
