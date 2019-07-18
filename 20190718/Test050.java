@@ -4,7 +4,7 @@ class Temp{
 	public void setData(Object data){this.data=data;}
 }
 
-public class Test049{
+public class Test050{
 	public static void main(String[] args) throws Exception{
 		String l = "HelloWorld";
 		System.out.println(l);
