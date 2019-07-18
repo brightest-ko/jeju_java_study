@@ -4,6 +4,7 @@ class Temp <T extends Object>{
 	public void setData(T data){this.data=data;}
 }
 
+//1.5버전부터 지원됨
 public class Test052{
 	public static void main(String[] args) throws Exception{
 		Temp<String> t = new Temp<String>();
