@@ -7,9 +7,9 @@ class Temp <T extends Object>{
 //1.5버전부터 지원됨
 public class Test052{
 	public static void main(String[] args) throws Exception{
-		Temp<String> t = new Temp<String>();
-		t.setData("Hello");
-		String l = t.getData();
+		Temp<Double> t = new Temp<Double>();
+		t.setData(10.0);
+		Double l = t.getData();
 		System.out.println(l);
 	}
 }
