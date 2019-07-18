@@ -1,7 +1,7 @@
 class Temp{
-	private int data = 100;
-	int getData(){return data;}
-	void setData(int data){this.data=data;}
+	private Object data = 100;
+	public Object getData(){return data;}
+	public void setData(Object data){this.data=data;}
 }
 
 public class Test049{
