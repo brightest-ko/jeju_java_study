@@ -7,6 +7,10 @@ class Temp{
 public class Test050{
 	public static void main(String[] args) throws Exception{
 		String l = "HelloWorld";
-		System.out.println(l);
+		String t = "HelloWorld";
+		System.out.println(l==t);
+		
+		Object o = "HelloWorld";
+		String r = (String)o;
 	}
 }
