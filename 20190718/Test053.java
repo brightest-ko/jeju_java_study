@@ -24,11 +24,12 @@ class LinkedList<T extends Object>{
 
 public class Test053{
 	public static void main(String[] args) throws Exception{
-		add("apple");
-		add("banana");
-		add("orange");
-		add("kiwi");
-		print();
+		LinkedList<String> ll = new LinkedList<String>();
+		ll.add("apple");
+		ll.add("banana");
+		ll.add("orange");
+		ll.add("kiwi");
+		ll.print();
 	/*
 		tail.next = new Node<String>("apple",null);
 		tail = tail.next;
