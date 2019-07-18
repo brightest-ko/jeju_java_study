@@ -7,5 +7,9 @@ public class Test055{
 		System.out.println(i.getClass().getName());
 		System.out.println(t.getClass().getName());
 		
+		int j = i; //UnBoxing
+		int t2 = (Integer)t;
+		System.out.println(j);
+		System.out.println(t2);
 	}
 }
