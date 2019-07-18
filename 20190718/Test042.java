@@ -5,5 +5,6 @@ class Temp{
 public class Test042{
 	public static void main(String[] arg){
 		int j = Temp.i;
+		System.out.println(j);
 	}
 }
