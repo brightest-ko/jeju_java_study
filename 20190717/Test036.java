@@ -4,6 +4,7 @@ abstract class Bank{
 		double r = calc(100.0, 100, 0.066);
 		System.out.println(r);
 	}
+	private int subCalc(){return 0;}
 }
 
 class BokriBank extends Bank{
