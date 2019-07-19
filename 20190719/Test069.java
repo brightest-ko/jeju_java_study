@@ -3,7 +3,8 @@ import java.util.*;
 
 public class Test069{
 	public static void main(String[] args) throws Exception{
-		Set<String> l = new TreeSet<String>();
+		//Set<String> l = new TreeSet<String>();
+		Set<String> l = new HashSet<String>();
 		l.add("apple");
 		l.add("banana");
 		l.add("banana");
