@@ -21,6 +21,10 @@ public class Test069{
 		while(it.hasNext()){
 			String ll = it.next();
 			System.out.println(ll);
+			if(ll.indexOf("an")!= -1){
+				it.remove();
+			}
 		}
+		System.out.println(l);
 	}
 }
