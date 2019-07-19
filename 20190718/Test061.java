@@ -1,5 +1,5 @@
 class Temp{
-	public static int indexOf(char[] str, char[] parts){
+	public static int indexOf3(char[] str, char[] parts){
 		for(int i=0;i<str.length;i++){
 			int a = 1;
 			for(int j=0;j<parts.length;j++){
@@ -29,6 +29,23 @@ class Temp{
 		}
 		return -1;
 	}
+	
+	private static int find_idx = 0;
+	public static int indexOf(char[] str1, char[] str2 ){
+		int count = 0;
+		for(int i=0; i<str2.length; i++){ // or
+			for(int j=0; j<str1.length; j++){ // HelloWorld
+				if(str1[j] == str2[i]) 
+				{	
+					find_idx = j;
+					count ++;
+					if(count==str2.length)
+						return find_idx;
+				}
+			}
+		}
+		return -1;
+	}
 }
 
 public class Test061{
@@ -52,5 +69,8 @@ public class Test061{
 		System.out.println(l.indexOf("d1") ); //-1
 		System.out.println(l.indexOf("HelloWorld2") ); //-1
 		System.out.println(l.indexOf("ab") ); //-1
+		
+		l = "HHelloWorld";
+		System.out.println(l.indexOf("Hl") ); //-1
 	}
 }

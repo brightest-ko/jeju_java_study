@@ -3,7 +3,7 @@ class Node<T extends Object>{
 	Node<T> next = null;
 	
 	Node(T i, Node<T> n){
-		data = i;
+		data = i;¤¤
 		next = n;
 	}
 }
@@ -16,6 +16,7 @@ class LinkedList<T extends Object>{
 		tail = tail.next;
 	}
 	void print(){
+	
 		for(Node<T> n = head.next; n!=null;n=n.next){
 			System.out.println(n.data);
 		}
