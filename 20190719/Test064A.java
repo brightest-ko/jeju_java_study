@@ -11,6 +11,7 @@ public class Test064A{
 	패키지가 지정된 클래스 컴파일 : 
 	javac -d [폴더] Test064A.java 	
 	javac -d . Test064A.java
+	//결과물이 [폴더]에 생긴다.
 	
 	- 패키지를 지정 안하면 자동으로 Unnamed 패키지에 소속된다. 이건 사용시 제약이 많다. 
 	
