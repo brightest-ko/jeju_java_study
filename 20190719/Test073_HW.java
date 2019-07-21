@@ -8,24 +8,28 @@ class HW{
 		Iterator<String> it = l.iterator();
 		while(it.hasNext()){
 			String ll = it.next();
-			System.out.println(ll);
-			if(ll.indexOf("an")!= -1){
-				it.remove();
+			sb.append("'");
+			sb.append(ll);
+			sb.append("'");
+			
+			if(it.hasNext()){
+				sb.append(",");
 			}
 		}
+		
 		sb.append("]");
 		return sb.toString();
 	}
 }
 
-public class Test069{
+public class Test073_HW{
 	public static void main(String[] args){
 	
-		List<String> l = new ArrayList<String>();
-		l.add("apple");
-		l.add("banana");
-		l.add("orange");
-		l.add("kiwi");
+		List<String> ls = new ArrayList<String>();
+		ls.add("apple");
+		ls.add("banana");
+		ls.add("orange");
+		ls.add("kiwi");
 		
 		String l = HW.CollectionString(ls);
 		System.out.println( l );
