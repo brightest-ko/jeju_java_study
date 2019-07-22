@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class Test078{
 	public static void main(String[] args) throws IOException{
-		OutputStream out = new FileOutputStream("a.txt");
+		OutputStream out = new FileOutputStream("a.dat");
 		out.write(65); //A
 		out.write(66); //B
 		out.write(67); //C

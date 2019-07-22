@@ -4,8 +4,8 @@ import java.io.*;
 
 public class Test080{
 	public static void main(String[] args) throws IOException{
-		InputStream in = new FileInputStream("C:\\A\\PostView.htm");
-		OutputStream out = new FileOutputStream("C:\\A\\b.htm");
+		InputStream in = new FileInputStream("a.dat");
+		OutputStream out = new FileOutputStream("b.dat");
 		
 		while(true){
 			int r = in.read();
@@ -17,3 +17,6 @@ public class Test080{
 
 //javac -d . Test080.java
 //java -classpath . temp.Test080 / java temp.Test080
+
+
+//dir *.dat / type b.dat
