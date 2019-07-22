@@ -2,7 +2,7 @@ package temp;
 import java.net.Socket;
 import java.io.*;
 
-//Client
+//Client BufferedInputStream
 public class Test084{
 	public static void main(String[] args) throws Exception{
 		InputStream in = new BufferedInputStream( new FileInputStream("C:\\A\\jdk-6u30-apidocs.zip"));
