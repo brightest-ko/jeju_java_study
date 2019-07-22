@@ -10,5 +10,5 @@ public class Test076_2{
 	}
 }
 
-//javac -d . Test076.java
-//java classpath . temp.Test076
+//javac -d . Test076_2.java
+//java -classpath . temp.Test076_2
