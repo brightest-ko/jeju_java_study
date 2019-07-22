@@ -6,8 +6,7 @@ import java.io.*;
 public class Test085C{
 	public static void main(String[] args) throws Exception{
 		Socket skt = new Socket("192.168.2.11",1123); //ipconfig
-		
-		
+
 		InputStream in = skt.getInputStream();
 		OutputStream out = new FileOutputStream("C:\\A\\hello.txt");
 		
