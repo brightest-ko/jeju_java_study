@@ -13,14 +13,14 @@ import java.io.*;
 	확장가능한 가변길이를 가지는 문자체제를 조입 : URF-8 (웹표준)
 	
 */
-public class Test086{
+public class Test087{
 	public static void main(String[] args) throws Exception{
-		Writer out2 = new FileWriter("a.txt"); //char 단위 /Stream 1바이트단위
-		out2.write("한");
-		out2.write('亞');
-		out2.close();
+		Writer out = new OutputStreamWriter(new FileOutputStream("a.txt")); //char입출력을 byte입출력으로 바꿔준다.
+		out.write("한");
+		out.write('亞');
+		out.close();
 		
-		Reader in = new FileReader("a.txt");
+		Reader in = new InputStreamReader(new FileInputStream("a.txt"));
 		System.out.println((char)in.read());
 		System.out.println((char)in.read());
 		System.out.println((char)in.read());
