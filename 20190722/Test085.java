@@ -2,25 +2,25 @@ package temp;
 import java.net.Socket;
 import java.io.*;
 
-//Client
-public class Test084{
+public class Test085{
 	public static void main(String[] args) throws Exception{
-		InputStream in = new BufferedInputStream( new FileInputStream("C:\\A\\jdk-6u30-apidocs.zip"));
-		OutputStream out = new BufferedOutputStream( new FileOutputStream("C:\\A\\c.zip"));
-		
-		int r = 0;
-		while((r=in.read())!=-1){
-			out.write(r);
-		}
-		
-		in.close();
+		OutputStream out = new FileOutputStream("d.dat");
+		out.writer(10101);
+		out.writer(10102);
+		out.writer(10103);
+		//이거 왜 깨지는지? 4Byte 다 보내는게 아니더라..
 		out.close();
+		
+		InputStream in = new FileInputStream("d.dat");
+		int a = in.read();
+		int b = in.read();
+		int c = in.read();
+		int d = in.read();
+		in.close();
+		
+		System.out.prinln(a);
+		System.out.prinln(b);
+		System.out.prinln(c);
+		System.out.prinln(d);
 	}
 }
-
-/*
-	java.io 패키지가 데코레이터 패턴이라는 설계기법으로 구현되었다.
-	-HelloGreet MerciGreet StarDeco SharpDeco : 데코레이터 패턴의 예제
-	
-	1바이트씩 복사하는 코드 짜세요.
-*/
