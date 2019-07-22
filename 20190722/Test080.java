@@ -7,9 +7,16 @@ public class Test080{
 		InputStream in = new FileInputStream("a.dat");
 		OutputStream out = new FileOutputStream("b.dat");
 		
+		/*
 		while(true){
 			int r = in.read();
 			if(r == -1) break;
+			out.write(r);
+		}
+		*/
+		
+		int r = 0;
+		while((r=in.read())!= -1){
 			out.write(r);
 		}
 	}
