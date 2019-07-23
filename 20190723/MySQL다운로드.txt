@@ -1,0 +1,8 @@
+Server only -> Next -> Excute ->Next
+-> Development Machine /3306 다 건드리지 말고 Next
+->1111/1111 유저추가x
+->Start the MySQL Server at System Startup 킬때마다 켜짐
+끄려면 대신 제어판으로 해야함. Next
+MySQL 5.6 Command Line Client
+
+https://m.blog.naver.com/ameeam/220167411336

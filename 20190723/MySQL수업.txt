@@ -1,0 +1,28 @@
+
+C:\Program Files\MySQL\MySQL Server 5.6\bin
+mysql -u root -p
+
+show databases;
+
+#먼저 database만들고 -> table만듦
+create database study;
+show databases;
+
+use study;
+
+drop table study01t;
+create table study01t(
+id INT not null,
+score TINYINT not null
+);
+
+insert into study01t values (10101,100);
+insert into study01t values (10102,90);
+
+select * from study01t ;
+insert into study01t values (10103,80);
+
+select * from study01t ;
+insert into study01t (score,id) values (90,10104);
+
+delete from study01t where id=10101;
