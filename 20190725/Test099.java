@@ -25,4 +25,5 @@ public class Test099{
 //javac Test099.java
 //java -classpath .;mysql-connector-java-5.0.8-bin.jar Test099
 
+//C:\Program Files\Java\jdk1.7.0_80\jre\lib\ext \ 20190725mysql-connector-java-5.0.8-bin.jar 복사
 //C:\Program Files\Java\jre7\lib\ext \ 20190725mysql-connector-java-5.0.8-bin.jar 복사
