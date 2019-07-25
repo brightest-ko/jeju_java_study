@@ -20,6 +20,13 @@ public class Test099{
 		String sql = "insert into studentt values ('10107','또오치','쌍문동')";
 		String sql2 = "delete from studentt where stid='10107'";
 		String sql3 = "update studentt set addr = '이도동' where stid = '10101'";
+		/*
+		stmt.executeUpdate(sql) 는 insert/delete/update 문장에 사용한다.
+		conn.close() 신중하게 해야 한다. (줄 끊는거다.)
+		stmt.close() 도 신중하게 (바구니 내리는 거)
+		conn 형성 - stmt형성 - 작업 - stmt.close() - conn.close()
+		*/
+		System.out.println(stmt.executeUpdate(sql));
 		System.out.println(stmt.executeUpdate(sql));
 		
 		/*
@@ -37,9 +44,10 @@ public class Test099{
 +-------+-----------+-----------+
 7 rows in set (0.00 sec)
 		*/
-		stmt.executeUpdate(sql2);
-		stmt.executeUpdate(sql3);
-
+		int num = stmt.executeUpdate(sql2);
+		System.out.println(num);
+		System.out.println(stmt.executeUpdate(sql3));
+		
 		/*
 		mysql> select * from studentt;
 +-------+-----------+-----------+
