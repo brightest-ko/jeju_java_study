@@ -1,6 +1,4 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-
+import java.sql.*;
 public class Test099{
 	public static void main( String[] args ) throws Exception{
 		Class.forName("com.mysql.jdbc.Driver"); //static
@@ -15,6 +13,48 @@ public class Test099{
 			"root","1111"); //socket을 이용해서 mysql을 접근하는 class겠구나
 			
 		System.out.println(conn.toString());
+		
+		Statement stmt = conn.createStatement();
+		System.out.println(stmt);
+		
+		String sql = "insert into studentt values ('10107','또오치','쌍문동')";
+		String sql2 = "delete from studentt where stid='10107'";
+		String sql3 = "update studentt set addr = '이도동' where stid = '10101'";
+		stmt.executeUpdate(sql);
+		
+		/*
+		mysql> select * from studentt;
++-------+-----------+-----------+
+| stId  | name      | addr      |
++-------+-----------+-----------+
+| 10101 | 홍길동    | 역삼동    |
+| 10102 | 고길동    | 개포동    |
+| 10103 | 이기자    | 역삼동    |
+| 10104 | 박기자    | 한남동    |
+| 10105 | 김영삼    | 홍제동    |
+| 10106 | 김대중    | 한남동    |
+| 10107 | 또오치    | 쌍문동    |
++-------+-----------+-----------+
+7 rows in set (0.00 sec)
+		*/
+		stmt.executeUpdate(sql2);
+		stmt.executeUpdate(sql3);
+
+		/*
+		mysql> select * from studentt;
++-------+-----------+-----------+
+| stId  | name      | addr      |
++-------+-----------+-----------+
+| 10101 | 홍길동    | 이도동    |
+| 10102 | 고길동    | 개포동    |
+| 10103 | 이기자    | 역삼동    |
+| 10104 | 박기자    | 한남동    |
+| 10105 | 김영삼    | 홍제동    |
+| 10106 | 김대중    | 한남동    |
++-------+-----------+-----------+
+6 rows in set (0.00 sec)
+		*/
+		stmt.close();
 		conn.close();
 	}
 }
