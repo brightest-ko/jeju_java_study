@@ -20,7 +20,7 @@ public class Test099{
 		String sql = "insert into studentt values ('10107','또오치','쌍문동')";
 		String sql2 = "delete from studentt where stid='10107'";
 		String sql3 = "update studentt set addr = '이도동' where stid = '10101'";
-		stmt.executeUpdate(sql);
+		System.out.println(stmt.executeUpdate(sql));
 		
 		/*
 		mysql> select * from studentt;
