@@ -1,0 +1,3 @@
+conn hr/hr;
+
+create table study
