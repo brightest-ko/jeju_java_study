@@ -1,0 +1,186 @@
+DROP TABLE StudentT;
+DROP TABLE SubjectT;
+DROP TABLE ScoreT;
+
+CREATE TABLE StudentT(
+	stId CHAR(5),
+	name VARCHAR2(9),
+	addr VARCHAR2(9)
+);
+
+INSERT INTO StudentT VALUES('10101','홍길동','역삼동');
+INSERT INTO StudentT VALUES('10102','고길동','개포동');
+INSERT INTO StudentT VALUES('10103','이기자','역삼동');
+INSERT INTO StudentT VALUES('10104','박기자','한남동');
+INSERT INTO StudentT VALUES('10105','김영삼','홍제동');
+INSERT INTO StudentT VALUES('10106','김대중','한남동');
+
+CREATE TABLE SubjectT(
+	subId   CHAR(4), 
+	name   VARCHAR2(9) 
+);
+
+INSERT INTO SubjectT VALUES ('KOR1','국어1');
+INSERT INTO SubjectT VALUES ('ENG1','영어1');
+INSERT INTO SubjectT VALUES ('MAT1','수학1');
+
+CREATE TABLE ScoreT(
+	stId  CHAR(5),
+	subId CHAR(4), 
+	score NUMBER
+);
+
+INSERT INTO ScoreT VALUES('10101','KOR1',60);
+INSERT INTO ScoreT VALUES('10101','ENG1',80);
+INSERT INTO ScoreT VALUES('10101','MAT1',90);
+
+INSERT INTO ScoreT VALUES('10102','KOR1',90);
+INSERT INTO ScoreT VALUES('10102','MAT1',90);
+INSERT INTO ScoreT VALUES('10102','ENG1',100);
+
+INSERT INTO ScoreT VALUES('10103','KOR1',70);
+INSERT INTO ScoreT VALUES('10104','KOR1',80);
+INSERT INTO ScoreT VALUES('10105','KOR1',50);
+INSERT INTO ScoreT VALUES('10106','KOR1',60);
+
+INSERT INTO ScoreT VALUES('10103','ENG1',90);
+INSERT INTO ScoreT VALUES('10104','ENG1',70);
+INSERT INTO ScoreT VALUES('10105','ENG1',60);
+INSERT INTO ScoreT VALUES('10106','ENG1',80);
+
+INSERT INTO ScoreT VALUES('10103','MAT1',70);
+INSERT INTO ScoreT VALUES('10104','MAT1',70);
+INSERT INTO ScoreT VALUES('10105','MAT1',80);
+INSERT INTO ScoreT VALUES('10106','MAT1',60);
+
+CREATE TABLE Score2T (
+	stId CHAR(5),
+	name VARCHAR2(9),
+	addr VARCHAR2(9),
+	kor1 NUMBER,
+	eng1 NUMBER,
+	mat1 NUMBER
+);
+
+INSERT INTO Score2T VALUES('10101','홍길동','역삼동',60,80,90);
+INSERT INTO Score2T VALUES('10102','고길동','개포동',90,90,100);
+INSERT INTO Score2T VALUES('10103','이기자','역삼동',70,90,70);
+INSERT INTO Score2T VALUES('10104','박기자','한남동',80,70,70);
+INSERT INTO Score2T VALUES('10105','김영삼','홍제동',50,60,80);
+INSERT INTO Score2T VALUES('10106','김대중','한남동',60,80,60);
+
+
+....
+Q.역삼동에 사는 학생의 국어성적을 서브쿼리로 구하세요.
+select stid from studentt where addr like '%역삼%';
+select * form scoret where stid in ('10101','10103') and subid = 'KOR1';
+
+select * form scoret
+where stid in ( select stid from studentt where addr like '%역삼%')
+and subid = 'KOR1';
+
+Q.학생별 평균점수를 group by로 구해보세요.
+select stid, ang(score) form scoret group by stid;
+
+Q.JOIN
+select * from subjectt inner join scoret
+on studentt.stid = scoret.stid;
+
+--오라클은 이렇게 이너조인을 할 수 있다.
+select * from subjectt , scoret
+where studentt.stid = scoret.stid;
+
+...
+insert into subjectt values ('phy1', '물리');
+
+Q.LEFT Outer Join
+select * from subjectt Left Outer Join scoret
+on studentt.stid = scoret.stid;
+
+--오라클용 아우터조인의 문법
+select * from subjectt , scoret
+where studentt.stid = scoret.stid(+)
+
+--Inner join on, outer join on 국제표준 sql
+--각 db별로 변형 sql를 탑재
+--oracle의 변형방법을 다른 db업체들이 따라하기도 한다.
+--오라클만 쓰는 사람들은 오라클의 방법만을 고집하는 경우가 있다.
+
+select x.stid , x.avg from
+(select stid, avg(score) as avg from scoret grup by stid ) x;
+-select 시 테이블의 별칭을 줄떄는 as를 사용하지 않는다. (mysql에서는 준다.)
+
+select * from (select stid, avg(score) as avg from scoret group by stid) x, studentt y
+where x.stid = y.stid;
+
+-as문법, join 의 문법이 약간 틀리다. 하지만 기본 개념은 동일하다.
+*거의 모든 데이터 베이스의 기본 개념은 같다 *
+-하나 해 놓으면 다른 거 어렵지 않다.
+
+Constraint in Oracle
+-primary key, foreign kry, check, unique, not null
+
+alter table studentt add constraint pk_studentt_stid primary key(stid);
+
+참조무결성 : FK쪽에서 PK에 없는 데이터는 존재하면 안된다.
+alter table studentt add constraint fk_studentt_stid foreign key(stid)
+references studentt(stid);
+
+**참조무결성 확인 
+// scoreT에 stId를 사용하고 있기 때문에 지워지면 안됨
+delete from studentT where stId = '10101';
+	
+// 10109 라는 데이터는 StudentT에 존재하지 않기 때문에. 
+insert into scoret values ('10109', 'KOR1', 100);
+
+
+alter table scoret add constraint fk_scoret_subid foreign key(subid)
+references stubjected(subid);
+--왜 안만들어지지?
+(FK Constraint 는 먼저 참조할 대상 PK Constraint 가 존재해야 생성 가능하다 )
+
+alter table scoret add constraint ck_scoret_score
+ check (score >= 0 and score <=100);
+
+insert into scoret values ('10101','PHY1',120);
+--안들어가는 거 확인
+
+alter table subjectt add constraint uq_subject_subid unique (subid);
+:not null은 보장안함 , no duplicate 는 보장
+
+insert into subjectt values (null ,'없음0');
+insert into subjectt values (null ,'없음0');
+--null 값의 중복은 허용한다.
+
+insert into subjectt values ('KOR1', '없음0');
+--허용 안한다.
+
+권장사항 : constraint 는 테스트 끝나고서...
+( 회원가입 담당자가 일 다 안한 상황에서
+게시판 담당자가 테스트 들어가려면 ? )
+
+constraint 지우기
+alter table scoret drop constraint ck_scorer_score;
+alter table subjectt drop constraint uq_subject_subid;
+alter table scoret drop constraint fk_scoret_subid;
+alter table subjectt drop constraint pk_subject_subid;
+
+--이름 붙이는 원칙이 있으면 관리할 떄 편하다.
+
+.....
+
+create table bangmyung_t(
+ no int,
+ gul varchar2(100),
+ the_time date
+);
+create sequence seq_bangmyung;
+INSERT INTO StudentT VALUES(seq_bangmyung.nextval,'만나서 반갑습니다',sysdate);
+
+--MYSQL
+create table bangmyung_t(
+ no int auto_increment primary key,
+ gul varchar2(100),
+ the_time datetime
+);
+INSERT INTO StudentT VALUES(default ,'만나서 반갑습니다', now());
