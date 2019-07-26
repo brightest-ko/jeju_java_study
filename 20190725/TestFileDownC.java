@@ -6,7 +6,7 @@ public class TestFileDownC {
     public static void main( String[] args ) throws Exception {
 		long startTime = System.currentTimeMillis();
 
-		Socket skt = new Socket("192.168.2.11", 1123);
+		Socket skt = new Socket("127.0.0.1", 1123);
 
 		OutputStream out = new FileOutputStream("down.zip");
 		InputStream in = skt.getInputStream();

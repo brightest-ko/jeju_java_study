@@ -49,9 +49,7 @@ class B implements Runnable{
 public class Test094{
 	public static void main( String[] args ){
 		new Thread( new A() ).start();
-		System.out.println("¿¿???");
 		new Thread( new B() ).start();
-		System.out.println("¿¿???2");
 	}
 
 }

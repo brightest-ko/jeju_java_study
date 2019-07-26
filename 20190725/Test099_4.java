@@ -1,7 +1,14 @@
 import java.sql.*;
 import java.util.*;
 
-class StudentVO{ //VO:
+class StudentVO{
+	/*
+	VO: Value Object 의 약자 - 값을 담는 객체
+	-테이블 구조와 동이하게, 레코드 하나를 인스턴스에 담을 수 있는 역활.
+	
+	DTO: Data Transfer Object
+	Entity 등 사용하는 경우도 있는데 실은 다 같은 얘기
+	*/
 	private String stid;
 	private String name;
 	private String addr;
