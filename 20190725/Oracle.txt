@@ -1,0 +1,47 @@
+conn hr/hr;
+
+create table study10t(
+ id Number(3),
+ data varchar2(10)
+);
+
+insert into study10t values (100, 'helloWorld');
+
+select * from study10t;
+
+--오라클 숫자 : number(3) -최대 세자리
+--varchar2 - oracle에서 만든 속도가 조금 빠른 varchar
+
+
+create table study11t(
+ id Number(3),
+ data char(10)
+);
+
+--오라클과 mysql은 일련번호 만드는 법이 틀린다.
+--:mysql auto_increment primary key를 썼다.
+create sequence seq_study11;
+insert into study11t values (seq_study11.nextval, 'apple');
+
+--mysql의 concat과 동일한 기능을 수행한다.
+--char(10)으로 선언한 필드에 'apple'을 넣으면 'apple     ' 된다.
+--mysql은 그냥 'apple'이 된다.
+select id, data || '*' from study11t;
+
+trim() - 좌/우의 공백문자를 제거하는 역활을 한다.
+select id, trim(data) || '*' from study11t;
+
+
+create table study11t(
+ the_time date
+);
+
+insert into study12t values (sysdate);
+
+-oracle 의 날짜 시간은 date 자료형 을 이용한다.현재시간은 sysdate를 이용한다.
+보여지는 형식은 to_char이용하여 형식을 지정하면 된다.
+
+
+select to_char(the_time, 'YYYY-MM-DD') from study12t;
+select to_char(the_time, 'YYYY-MM-DD HH24:MI:SS') from study12t;
+
